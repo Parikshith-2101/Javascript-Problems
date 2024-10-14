@@ -8,6 +8,22 @@ function displayResult(res)
 {
     document.getElementById("result").textContent = res;
 }
+function displayResult1(res)
+{
+    document.getElementById("result1").textContent = res;
+}
+function displayResult2(res)
+{
+    document.getElementById("result2").textContent = res;
+} 
+function displayResult3(res)
+{
+    document.getElementById("result3").textContent = res;
+} 
+function displayResult4(res)
+{
+    document.getElementById("result4").textContent = res;
+}
 
 /* 1 */
 function hello()
@@ -111,8 +127,8 @@ function swap()
     let temp = n1;
     n1=n2;
     n2=temp;
-    document.getElementById("result1").textContent = n1;
-    document.getElementById("result2").textContent = n2;
+    displayResult1(n1);
+    displayResult2(n2);
 }
 /* 12 */
 function Mathpow()
@@ -147,35 +163,35 @@ function numberReverse()
 /* 15 */
 function smallestGreatest()
 {
-    document.getElementById("result1").textContent = "";
-    document.getElementById("result2").textContent = "";	
+    displayResult1(" ");
+    displayResult2(" ");	
     let n1 = Number(document.getElementById("num1").value);
     let n2 = Number(document.getElementById("num2").value);
     let n3 = Number(document.getElementById("num3").value);
     if(n1<n2 && n1<n3)
     {
-	document.getElementById("result1").textContent = n1;
+	displayResult1(n1);
     }
     else if(n2<n1 && n2<n3)
     {
- 	document.getElementById("result1").textContent = n2;
+ 	displayResult1(n2);
     }
     else
     {
-    	document.getElementById("result1").textContent = n3; 
+    	displayResult1(n3);
     }
 
     if(n1>n2 && n1>n3)
     {
-	document.getElementById("result2").textContent = n1;
+	displayResult2(n1);
     }
     else if(n2>n1 && n2>n3)
     {
-	document.getElementById("result2").textContent = n2;
+	displayResult2(n2);
     } 
     else
     {
-   	document.getElementById("result2").textContent = n3;
+   	displayResult2(n3);
     }   
 }
 /* 16 */
@@ -283,9 +299,563 @@ function calculatorSimple()
     }
     displayResult(res);
 }
+
 /* 21 */
-function print100()
+function print100(n) 
 {
-    res="1 to 100";
-    displayResult(res);
+    if (n > 100) 
+    {
+        return;
+    }
+    document.getElementById("result").textContent += n + " ";
+    return print100(n + 1);
+}
+/* 22 */
+function printloop() 
+{
+    var n = 100;
+    for (i = 1; i <= n; i++) 
+    {
+        document.getElementById("result").textContent = document.getElementById("result").textContent + i + " ";
+    }
+}
+/* 23 */
+function factors() 
+{
+    let n = Number(document.getElementById("num1").value);
+    for (i = 1; i <= n; i++) 
+    {
+        if(n%i==0){
+            document.getElementById("result").textContent += i + " ";
+        }
+    }
+}
+/* 24 */
+function factorial() 
+{
+    let n = Number(document.getElementById("num1").value);
+    let fact = 1;
+    for (i = 1; i <= n; i++) 
+    {
+        fact = fact * i;
+    }
+    displayResult(fact);
+}
+/* 25 */
+function firstLast() 
+{
+    let n = Number(document.getElementById("num1").value);
+    displayResult2(n%10);
+    while(n>=10)
+    {
+        n = Math.floor(n/10);
+    }
+    displayResult1(n);
+}
+/* 26 */
+function multiplicationTab()
+{
+    let n = Number(document.getElementById("num1").value);
+    document.getElementById("result").textContent = "";
+    for(i=1;i<=10;i++)
+    {
+        document.getElementById("result").innerHTML += (i + " x " + n + " = " + (i*n)) + "<br>";
+    }
+}
+/* 27 */
+function naturalNum()
+{
+    let n = Number(document.getElementById("num1").value);
+    for(i=1;i<=n;i++)
+    {
+        document.getElementById("result").textContent += i + " ";
+    }
+}
+/* 28 */
+function naturalNumReverse()
+{
+    let n = Number(document.getElementById("num1").value);
+    for(i=n;i>=1;i--)
+    {
+        document.getElementById("result").textContent += i + " ";
+    }
+}
+/* 29 */
+function nBy5And11()
+{
+    document.getElementById("result").textContent = "";
+    let n = Number(document.getElementById("num1").value);
+    temp=0;
+    for(i=1;i<=n;i++)
+    {
+        if(i%5==0 && i%11==0)
+	{
+            document.getElementById("result").textContent += i + " ";
+	    temp=1;
+        }
+    }
+    if(temp==0)
+    {
+ 	alert("No numbers");
+    }
+}
+/* 30 */
+function oddN()
+{
+    document.getElementById("result").textContent = "";
+    let n = Number(document.getElementById("num1").value);
+    temp = 0;
+    for(i=0;i<=n;i++)
+    {
+	if(i%2!=0)
+	{
+	    document.getElementById("result").textContent += i + " ";
+	    temp = 1;
+	}
+    }
+    if(temp == 0)
+    {
+	displayResult("No");
+    }
+}
+/* 31 */
+function pdtofDigits()
+{ 
+    let n =document.getElementById("num1").value;
+    let pdt = 1;
+    let num = Array.from(String(n),Number);
+    for(i=0;i<num.length;i++)
+    {
+	pdt = pdt * num[i];
+    }
+    displayResult(pdt);
+}
+/* 32 */
+function palString()
+{
+    let name = document.getElementById("num1").value;
+    let Str = "";
+    for(i=name.length-1;i>=0;i--)
+    {
+	Str += name[i];
+    }
+    if(name.toLowerCase()==Str.toLowerCase())
+    {
+	displayResult("Palindrome");
+    }
+    else
+    {
+	displayResult("Not a Palindrome");
+    }
+}
+/* 33 */
+function perfectNum()
+{
+    let n = document.getElementById("num1").value;
+    let num = 0;
+    for(i=1;i<n;i++)
+    {
+  	if(n%i==0)
+  	{
+	    num += i;
+   	}
+    }
+    if(n==num)
+    {
+	displayResult("Perfect number");
+    }
+    else
+    {
+ 	displayResult("Not a perfect number");
+    }
+}
+/* 35 */
+function positiveNegative()
+{
+    let n = document.getElementById("num1").value;
+    if(n>0)
+    {
+  	displayResult("Positive number");
+    }
+    else if(n<0)
+    {
+	displayResult("Negative number");
+    }
+    else
+    {
+	displayResult("Zero is neither positive nor negative");
+    }
+}
+/* 37 */
+function evenN()
+{
+    let n = document.getElementById("num1").value;
+    let temp = 0;
+    for(i=1;i<=n;i++)
+    {
+	if(i%2==0)
+	{
+	    document.getElementById("result").textContent += i + " ";
+	    temp = 1;
+        }
+    }
+    if(temp==0)
+    {
+	displayResult("No number is Even");
+    }
+}
+/* 38 */
+function sumAvgofN()
+{
+    let n = document.getElementById("num1").value;
+    let sum = 0;
+    for(let i = 1;i<=n;i++)
+    {
+ 	sum += i;
+    }
+    displayResult1(sum);
+    let avg = sum/n;
+    displayResult2(avg);
+}
+/* 39 */
+function sumofEven()
+{
+    let n = document.getElementById("num1").value;
+    let sum = 0;
+    for(let i = 1;i<=n;i++)
+    {
+ 	if(i%2==0)
+	{
+	    document.getElementById("result1").textContent += i + " ";
+   	    sum = sum+i;
+	}
+    }
+    displayResult2(sum);
+}
+/* 40 */
+function sumofEvenOdd()
+{
+    let n = document.getElementById("num1").value;
+    let sumOdd=0;
+    let sumEven=0;
+    for(let i = 1;i<=n;i++)
+    {
+   	if(i%2==0)
+    	{
+ 	    sumEven += i;
+   	}
+	else
+        {
+	    sumOdd += i;
+ 	}
+    }
+    displayResult1(sumEven);
+    displayResult2(sumOdd);
+}
+/* 43 */
+function cone()
+{
+    let l = Number(document.getElementById("num1").value);
+    let r = Number(document.getElementById("num2").value);
+    let h = Number(document.getElementById("num3").value);
+    let SurfaceArea = (3.14*r*l)+3.14*(r**2);
+    let Volume = (1/3)*3.14*(r**2)*h;
+    let LateralSArea = 3.14*r*l;
+    displayResult1(SurfaceArea);
+    displayResult2(Volume);
+    displayResult3(LateralSArea);
+}
+/* 44 */
+function cube()
+{
+    let l = Number(document.getElementById("num1").value);
+    let SurfaceArea = 6*(l**2);
+    let Volume = l**3;
+    let LateralSArea = 4*(l**2);
+    displayResult1(SurfaceArea);
+    displayResult2(Volume);
+    displayResult3(LateralSArea);
+}
+/* 45 */
+function cuboid()
+{
+    let l = Number(document.getElementById("num1").value);
+    let w = Number(document.getElementById("num2").value);
+    let h = Number(document.getElementById("num3").value);
+    let SurfaceArea = (2*l*w)+(2*l*h)+(2*w*h);
+    let Volume = l*w*h;
+    let LateralSArea = 2*h*(l+w);
+    displayResult1(SurfaceArea);
+    displayResult2(Volume);
+    displayResult3(LateralSArea);
+}
+/* 46 */
+function cylinder()
+{
+    let r = Number(document.getElementById("num1").value);
+    let h = Number(document.getElementById("num2").value);
+    let SurfaceArea = (2*3.14*(r**2))+(2*3.14*r*h);
+    let Volume = 3.14*(r**2)*h;
+    let LateralSArea = 2*3.14*r*h;
+    let TopBottomArea = 3.14*(r**2);
+    displayResult1(SurfaceArea);
+    displayResult2(Volume);
+    displayResult3(LateralSArea);
+    displayResult4(TopBottomArea);
+}
+/* 47 */
+function sphere()
+{
+    let r = Number(document.getElementById("num1").value);
+    let SurfaceArea = 4*3.14*(r**2);
+    let Volume = 4*3.14*(r**3);
+    displayResult1(SurfaceArea);
+    displayResult2(Volume);
+}
+/* 48 */
+function countofDigits()
+{
+    let n = Number(document.getElementById("num1").value);
+    let count = 0;
+    while(n!=0)
+    {
+	count++;
+    	n = Math.floor(n/10);
+    }
+    displayResult(count);
+}
+/* 49 */
+function fibonacciSeries()
+{
+    let n = Number(document.getElementById("num1").value);
+    let n1 = 0;
+    let n2 = 1;
+    for(let i = 1;i<=n;i++)
+    {
+	document.getElementById("result").textContent += n1 + " , ";
+	sum = n1+n2;
+        n1=n2;
+  	n2=sum;
+    }
+    
+}
+/* 51 */
+function palNum()
+{
+    let n = document.getElementById("num1").value;
+    let temp = n;
+    let rev = 0;
+    while(n!=0)
+    {
+ 	rev = rev*10 + n%10;
+   	n = Math.floor(n/10);
+    }
+    if(temp==rev)
+    {
+	displayResult("Palindrome");
+    }
+    else
+    {
+ 	displayResult("Not Palindrome");
+    }
+}
+/* 52 */
+function concat()
+{
+    let name1 = document.getElementById("num1").value;
+    let name2 = document.getElementById("num2").value;
+    let concatinated = name1+name2;
+    displayResult(concatinated);
+}
+/* 53 */
+function ASCII()
+{
+    displayResult("");
+    let name = document.getElementById("num1").value;
+    for(let i = 0;i<name.length;i++)
+    {
+ 	document.getElementById("result").textContent += name.charCodeAt(i) + " ";
+    }
+}
+/* 54 */
+function concatMethod()
+{
+    let name1 = document.getElementById("num1").value;
+    let name2 = document.getElementById("num2").value;
+    displayResult(name1.concat(name2));
+}
+/* 56 */
+function firstChar()
+{
+    let string = document.getElementById("num1").value;
+    displayResult(string[0]);
+}
+/* 57 */
+function lastChar()
+{
+    let string = document.getElementById("num1").value;
+    displayResult(string[string.length-1]);
+}
+/* 58 */
+function middleChar()
+{
+    let string = document.getElementById("num1").value;
+    let mid = string[(string.length-1)/2];
+    if((string.length-1)%2!=0)
+    {
+	displayResult("There is no Perfect middle for "+string);
+    }
+    else
+    {
+ 	displayResult(mid);
+    }
+}
+/* 59 */
+function toCharArray()
+{
+    let string = document.getElementById("num1").value;
+    for(let i = 0; i<string.length ; i++)
+    {
+	document.getElementById("result").textContent += string[i]+",";
+    }
+}
+/* 60 */
+function length()
+{
+    let string = document.getElementById("num1").value;
+    displayResult1(string.length);
+    let length = 0;
+    while(string[length]!= undefined)
+    {
+	length++;
+    }
+    displayResult2(length);
+}
+/* 61 */
+function index()
+{
+    let string = document.getElementById("num1").value;
+    let ch = document.getElementById("num2").value;
+    for(let i = 0; i < string.length; i++)
+    {
+	if(ch==string[i])
+	{
+	    displayResult(i+"th index");
+	}
+    }
+}
+/* 62 */
+function occurance()
+{
+    let string = document.getElementById("num1").value;
+    let ch = document.getElementById("num2").value;
+    let count=0;
+    for(let i = 0; i < string.length; i++)
+    {
+	if(ch==string[i])
+	{
+	    count++;
+	}
+    }
+    if(count>0)
+    {
+	displayResult(ch+" occurs "+count+" times");
+    }
+    else
+    {
+	displayResult(ch+" not present here");
+    }
+}
+/* 64 */
+function replaceString()
+{
+    let String = document.getElementById("num1").value;
+    let String1 = document.getElementById("num2").value;
+    let String2 = document.getElementById("num3").value;
+    let replaced = String.replace(String1,String2);
+    displayResult(replaced);
+}
+/* 65 */
+function reverseTheCase()
+{
+    let string = document.getElementById("num1").value;
+    let temp = "";
+    for(let i in string)
+    {
+	if(string[i] == string[i].toLowerCase())
+	{
+	    temp += (string[i].toUpperCase());
+	}
+        else
+        {
+ 	    temp += (string[i].toLowerCase());
+        }
+    }
+    displayResult(temp);
+}
+/* 67 */
+function countofAll()
+{
+    let string = document.getElementById("num1").value;
+    let alphaPattern = /[A-Za-z]/;
+    let digPattern = /[0-9]/;
+    let alphabets = 0;
+    let digits = 0;
+    let specialChar = 0;
+    for(let i in string)
+    {
+	if(alphaPattern.test(string[i]))
+	{
+	    alphabets++;
+	}
+	else if(digPattern.test(string[i]))
+   	{
+ 	     digits++;   
+   	}
+	else
+  	{
+	    specialChar++;
+  	}
+    }
+    displayResult1("Alphabets : "+ alphabets);
+    displayResult2("Digits : "+ digits);
+    displayResult3("Special Characters : "+ specialChar);
+
+}
+/* 68 */
+function countofVowelsCons()
+{
+    let string = document.getElementById("num1").value;
+    let vowels =0;
+    let cons = 0;
+    string = string.toLowerCase();
+    for(let i in string)
+    {
+	if(string[i]=='a'||string[i]=='e'||string[i]=='i'||string[i]=='o'||string[i]=='u')
+	{
+	    vowels++;
+	}
+	else
+	{
+	    cons++;
+	}
+    }
+    displayResult1("Count of Vowels : "+vowels);
+    displayResult2("Count of Consonents : "+cons);
+}
+/* 73 */
+function deleteAllCons()
+{
+    let string = document.getElementById("num1").value;
+    let vow = /[aeiouAEIOU]/;
+    for(let i in string)
+    {
+	if(vow.test(string[i]))
+	{
+	}
+	else
+	{
+	    document.getElementById("result").textContent += string[i];
+  	}
+    }
 }

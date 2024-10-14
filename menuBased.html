@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <p class="h2 p-0">Menu Based Arithmetic Operation</p>
+	<div class="row">
+	    <div class="col-12 my-2">	
+		<label class="col-2">Enter a number :</label>
+		<input type="number" id="num1">	
+	    </div>
+	    <div class="col-12 my-2">
+		<label class="col-2">Enter a number :</label>
+		<input type="number" id="num2">	
+	    </div>
+	    <div class="col-12 my-2 d-flex">
+		<label class="col-2 me-1">1 - Add<br>2 - Subtract<br>3 - Multiply<br>4 - Division<br>5 - Exit</label>
+		<input type="number" id="num2">	
+	    </div>
+  	    <div class="border rounded mt-4">
+		<div class="p-5">Answer : <span id="result1"></span></div>
+ 	    </div>
+	</div>
+	<button class="btn btn-primary mt-4" onclick="menuBased()">Calculate</button>
+    </div>
+    <script src = "js/script.js"></script>
+</body>
+</html>
