@@ -486,6 +486,34 @@ function positiveNegative()
 	displayResult("Zero is neither positive nor negative");
     }
 }
+/* 36 */
+function NotesInAmount()
+{
+    let amount = Number(document.getElementById("num1").value);
+    let notes = [500,200,100,50,20,10,5,2,1];
+    let note = {};
+    for(let i in notes)
+    {
+        count=0;
+    	while(amount>=notes[i])
+        {
+            amount = amount - notes[i];
+            count++;
+            console.log(note);
+        }
+        note[notes[i]] =  count;
+
+    }
+   let div=document.getElementById("result");
+   for(let char in note){
+	console.log(char);
+	if(note[char]>0){
+            let element=document.createElement('div');
+	    element.textContent=char+":"+note[char];
+            div.appendChild(element);
+	}
+    }
+}
 /* 37 */
 function evenN()
 {
@@ -551,6 +579,57 @@ function sumofEvenOdd()
     }
     displayResult1(sumEven);
     displayResult2(sumOdd);
+}
+/* 41 */
+function electricityBill()
+{
+    let n = Number(document.getElementById("num1").value);
+    let charges=0;
+    if(n<=50)
+    {
+	charges = n*2.6;
+    }
+    else if(n<=100)
+    {
+	charges = 50*2.6 + (n-50)*3.25;
+    }
+    else if(n<=200) 
+    {
+	charges = 50*2.6 + 50*3.25 + (n-100)*5.65;
+    }
+    else
+    {
+	charges = 50*2.6 + 50*3.25 + 100*5.65 + (n-200)*7.25;
+    }
+    if(n>700)
+    {
+ 	charges = charges + (0.5/100)*charges;
+    }
+    displayResult(charges.toFixed(2) + " Rs/-");
+}
+/* 42 */
+function employeeSalary()
+{
+    displayResult("");
+    let n = Number(document.getElementById("num1").value);
+    let hra,da,gross;
+    if(n<=10000)
+    {
+  	hra = (8/100)*n;
+	da = (10/100)*n;
+    }
+    else if(n>10000 && n<=20000)
+    {
+	hra = (16/100)*n;
+    	da = (20/100)*n;
+    }
+    else
+    {
+ 	hra = (24/100)*n;
+  	da = (30/100)*n;
+    }
+    gross = n + hra + da;
+    displayResult(gross+"/-");
 }
 /* 43 */
 function cone()
@@ -684,6 +763,16 @@ function concatMethod()
     let name2 = document.getElementById("num2").value;
     displayResult(name1.concat(name2));
 }
+/* 55 */
+function byteToString()
+{
+    /*let byte = document.getElementById("num1").value;*/
+    let byte = [72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100];
+    for(let i in byte)
+    {
+	document.getElementById("result").textContent += String.fromCharCode(byte[i]) + " ";
+    }
+}
 /* 56 */
 function firstChar()
 {
@@ -766,6 +855,20 @@ function occurance()
 	displayResult(ch+" not present here");
     }
 }
+/* 63 */
+function checkPrefix()
+{
+    let string = document.getElementById("num1").value;
+    let prefix = document.getElementById("num2").value;
+    if(prefix === string.slice(0,prefix.length))
+    {
+ 	displayResult("Yes,..."+prefix+" is the prefix of "+string);
+    }
+    else
+    {
+	displayResult("No..prefix check FAILED!");
+    }
+}
 /* 64 */
 function replaceString()
 {
@@ -843,11 +946,80 @@ function countofVowelsCons()
     displayResult1("Count of Vowels : "+vowels);
     displayResult2("Count of Consonents : "+cons);
 }
+/* 70 */
+function smallestLargestWord()
+{  
+    let string = document.getElementById("num1").value;
+    let words = string.split(" ");
+    let smallest = words[0];
+    let largest = words[0];
+    for (let word of words) {
+        if (word.length < smallest.length) {
+            smallest = word;
+        }
+        if (word.length > largest.length) {
+            largest = word;
+        }
+    }
+    displayResult1("Smallest Word : " + smallest);
+    displayResult2("Largest Word : " + largest);
+}
+/* 71 */
+function changeEveryLetter()
+{
+    let string = document.getElementById("num1").value;
+    let charcode;
+    let replaced="";
+    for(let i in string)
+    {
+	if(string[i]=='z')
+	{
+	    charcode = 97;
+	}
+	else if(string[i]=='Z')
+	{
+ 	    charcode = 65;
+ 	}
+	else
+	{
+ 	    charcode = string.charCodeAt(i)+1;
+	}
+	replaced += String.fromCharCode(charcode);
+    }
+    displayResult(replaced);
+}
+/* 72 */
+function missingLetters()
+{
+    displayResult("");
+    let string = document.getElementById("num1").value;
+    string = string.toLowerCase();
+    let missing;
+    let count=0;
+    for(let i in string)
+    {
+	if(string.charCodeAt(i+1) !== string.charCodeAt(i)+1)
+	{
+	    console.log(string.charCodeAt(i)+1);
+	    missing = String.fromCharCode(string.charCodeAt(i)+1);
+	    console.log(missing);
+	    count = 1;
+	    break;
+	}	
+    }
+    if(count==0)
+    {
+ 	displayResult("There is no missing letters");
+    }
+    displayResult(missing);
+}
+
 /* 73 */
 function deleteAllCons()
 {
+    displayResult("");
     let string = document.getElementById("num1").value;
-    let vow = /[aeiouAEIOU]/;
+    let vow = /[b-df-hj-np-tv-zB-DF-HJ-NP-TV-Z]/;
     for(let i in string)
     {
 	if(vow.test(string[i]))
@@ -858,4 +1030,36 @@ function deleteAllCons()
 	    document.getElementById("result").textContent += string[i];
   	}
     }
+}
+/* 74 */
+function noOfOccurrence()
+{
+    displayResult1("");
+    displayResult2("");
+    let string = document.getElementById("num1").value;
+    string = string.toUpperCase();
+    let charArr = string.split("");
+    let max=0;
+    let maxChar="";
+    for(let i=0;i<string.length;i++)
+    {
+	let count = 1;
+	for(let j = i+1; j<string.length;j++)
+	{
+	    if(charArr[i]==charArr[j])
+	    {
+		count++;
+	 	charArr[j] = 1;
+  	    }
+	}
+	if(charArr[i]!=1)
+	{           
+	    document.getElementById("result1").innerHTML += charArr[i]+" : "+count+" , ";
+	    if(count>max){
+            	max=count;
+            	maxChar=charArr[i];
+ 	    }
+	}
+    }
+    displayResult2(maxChar+" : "+max);
 }
