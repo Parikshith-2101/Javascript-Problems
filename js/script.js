@@ -718,6 +718,43 @@ function fibonacciSeries()
     }
     
 }
+/* 50 */
+function menuBased()
+{
+    let menu = Number(document.getElementById("menu").value);
+    document.getElementById("InputNum").classList.add("d-none");
+    if(menu >=1 & menu<=4 )
+    {
+  	document.getElementById("InputNum").classList.remove("d-none");
+	let n1 = Number(document.getElementById("num1").value);
+	let n2 = Number(document.getElementById("num2").value);
+	let operation;
+	switch(menu)
+	{
+	    case 1:
+		operation = n1+n2;
+	   	break;
+	    case 2:
+		operation = n1-n2;
+          	break;
+	    case 3:
+		operation = n1*n2;
+          	break;
+	    case 4:
+		operation = n1/n2;
+	}	
+	displayResult(operation);
+    }
+    else if(menu==5)
+    {
+	displayResult("Operation Exited!");
+	
+    }
+    else
+    {
+	displayResult("Invalid Number");
+    }
+}
 /* 51 */
 function palNum()
 {
@@ -896,6 +933,38 @@ function reverseTheCase()
     }
     displayResult(temp);
 }
+/* 66 */
+function reverseVowels()
+{
+    let string = document.getElementById("num1").value;
+    string = string.toLowerCase();
+    let vowels = "aeiou";
+    let newString = "";
+    let vowelArr = [];
+    for(let i in string)
+    {
+ 	if(vowels.includes(string[i]))
+	{
+	    vowelArr.unshift(string[i]);
+	}
+    }
+    for(let i in string)
+    {
+	let temp = string[i];
+        if(vowels.includes(string[i]))
+	{
+	    temp = vowelArr[0];
+  	    newString += temp;
+            vowelArr.shift();
+	}
+	else
+	{
+	    newString += temp;
+	}
+    }
+    displayResult(newString);
+     
+}
 /* 67 */
 function countofAll()
 {
@@ -946,6 +1015,35 @@ function countofVowelsCons()
     displayResult1("Count of Vowels : "+vowels);
     displayResult2("Count of Consonents : "+cons);
 }
+/* 69 */
+function bracketsCheck()
+{
+    let string = document.getElementById("num1").value;
+    let open = ['(','[','{'];
+    let close = [')',']','}'];
+    let arr = [];
+    let flag=0,last;
+    for(let i in string){
+    	if(open.includes(string[i])){
+            arr.push(string[i]);
+            console.log(arr);
+    	}
+    	else if(close.includes(string[i])){
+            last = [];
+            last = arr.pop();   
+       	    if(open.indexOf(last)==close.indexOf(string[i])){
+            	flag=1;
+            }
+    	}
+    }
+    if(flag==1&&arr.length==0){
+    	displayResult("is valid");
+    }
+    else
+    {
+    	displayResult("not valid");
+    }
+}
 /* 70 */
 function smallestLargestWord()
 {  
@@ -994,24 +1092,20 @@ function missingLetters()
     displayResult("");
     let string = document.getElementById("num1").value;
     string = string.toLowerCase();
-    let missing;
-    let count=0;
-    for(let i in string)
+    let first = string.charCodeAt(0);
+    let last = string.charCodeAt(string.length-1);
+    let j = 0;
+    for (let i = first; i <= last; i++)
     {
-	if(string.charCodeAt(i+1) !== string.charCodeAt(i)+1)
+ 	if(string.charCodeAt(j)==i)
 	{
-	    console.log(string.charCodeAt(i)+1);
-	    missing = String.fromCharCode(string.charCodeAt(i)+1);
-	    console.log(missing);
-	    count = 1;
-	    break;
-	}	
+	    j++;
+ 	}
+	else
+	{
+	    document.getElementById("result").textContent += String.fromCharCode(i) + " ";
+	}
     }
-    if(count==0)
-    {
- 	displayResult("There is no missing letters");
-    }
-    displayResult(missing);
 }
 
 /* 73 */
@@ -1062,4 +1156,39 @@ function noOfOccurrence()
 	}
     }
     displayResult2(maxChar+" : "+max);
+}
+/* 75 */
+
+function replacePalindromeSubstrings() {
+    let string = document.getElementById("num1").value;
+    string = string.toLowerCase();
+    let stringArr = string.split(" ");
+    let result = [];
+
+    for (let i in stringArr) {
+        result.push(palindromeCheck(stringArr[i]));
+    }
+
+    displayResult(result.join(" "));
+}
+
+function palindromeCheck(word) {
+    let rev = "";
+    for (let j = word.length - 1; j >= 0; j--) {
+        rev += word[j];
+    }
+    if (rev === word) {
+        if(word.length>1){
+            for(let char in word)
+	    {
+	    	word=word.replace(word[char],"*");
+	    }
+	    return word;
+	}
+	else {
+	    return word;
+	}
+    } else {
+        return word;
+    }
 }
