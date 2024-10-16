@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<title>15</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+    	<div class="container">
+	    <p class="h2 p-0">Find smallest and largest of 3 numbers</p>
+	    <div class="row">
+		<div class="col-12 my-2">
+		    <label class="col-2">Enter the Number1:</label>
+		    <input type="number" id="num1">	
+		</div>
+		<div class="col-12 my-2">
+		    <label class="col-2">Enter the Number2:</label>
+		    <input type="number" id="num2">	
+		</div>
+		<div class="col-12 my-2">
+		    <label class="col-2">Enter the Number3:</label>
+		    <input type="number" id="num3">	
+		</div>
+		<div class="border rounded mt-4">
+		    <div class="py-3 px-5">Smallest Number : <span id="result1"></span></div>
+		    <div class="py-3 px-5">Greatest Number : <span id="result2"></span></div>
+		</div>
+	    </div>
+	    <button class="btn btn-primary mt-4" onclick="smallestGreatest()">Calculate</button>
+	</div>
+    <script src="js/script.js"></script>
+    </body>
+</html>
