@@ -1022,21 +1022,26 @@ function bracketsCheck()
     let open = ['(','[','{'];
     let close = [')',']','}'];
     let arr = [];
-    let flag=0,last;
     for(let i in string){
-    	if(open.includes(string[i])){
+    	if(open.includes(string[i]))
+	{
             arr.push(string[i]);
-            console.log(arr);
     	}
-    	else if(close.includes(string[i])){
-            last = [];
-            last = arr.pop();   
-       	    if(open.indexOf(last)==close.indexOf(string[i])){
-            	flag=1;
+    	else if(close.includes(string[i]))
+	{
+	    if(arr.length===0){
+ 		displayResult("not valid");
+	     	return;
+	    }
+            let last = arr.pop();   
+       	    if(open.indexOf(last)!==close.indexOf(string[i]))
+	    {
+            	displayResult("not valid");
+		return;
             }
     	}
     }
-    if(flag==1&&arr.length==0){
+    if(arr.length==0){
     	displayResult("is valid");
     }
     else
